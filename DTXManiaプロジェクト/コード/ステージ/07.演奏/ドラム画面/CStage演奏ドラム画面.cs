@@ -345,6 +345,18 @@ namespace DTXMania
 				#region [ 初めての進行描画 ]
 				if ( base.b初めての進行描画 )
 				{
+
+
+
+					// Initialize average FPS stats collection
+					CDTXMania.FPS.GetAndResetAverageFpsSinceLastReset();
+					bHasFinishedPlaying = false;
+					bHasFinishedEndAnime = false;
+					bHasFinishedFadeout = false;
+					Trace.TraceInformation("Average FPS calculation initialized.");
+
+
+
                     CSound管理.rc演奏用タイマ.tリセット();
 					CDTXMania.Timer.tリセット();
 					this.ctチップ模様アニメ.Drums = new CCounter( 0, 1, 500, CDTXMania.Timer );
@@ -549,12 +561,45 @@ namespace DTXMania
                 // 確認用 18_04_26(AioiLight)
                 //CDTXMania.act文字コンソール.tPrint(0, 0, C文字コンソール.Eフォント種別.白, this.actGauge.db現在のゲージ値[0].ToString());
 
+
+
+				// Trace and reset average FPS stats collection when one of the following becomes true for the first time
+				if (bHasFinishedPlaying ^ bIsFinishedPlaying ||
+					bHasFinishedEndAnime ^ bIsFinishedEndAnime ||
+					bHasFinishedFadeout ^ bIsFinishedFadeout)
+				{
+					bHasFinishedPlaying |= bIsFinishedPlaying;
+					bHasFinishedEndAnime |= bIsFinishedEndAnime;
+					bHasFinishedFadeout |= bIsFinishedFadeout;
+
+					var results = CDTXMania.FPS.GetAndResetAverageFpsSinceLastReset();
+					Trace.TraceInformation("Average FPS: {0} (bIsFinishedPlaying = {1}, bIsFinishedEndAnime = {2}, bIsFinishedFadeout = {3})",
+						results.AverageFpsSinceLastReset, bIsFinishedPlaying, bIsFinishedEndAnime, bIsFinishedFadeout);
+					var sb = new StringBuilder();
+					foreach (var averageFps in results.AverageFpsAtReportingIntervalsSinceLastReset)
+					{
+						sb.Append($"{averageFps},");
+					}
+					Trace.TraceInformation("Average FPS between reporting intervals: {0}", sb.ToString());
+				}
+
+
+
             }
             base.sw.Stop();
 			return 0;
 		}
 
 		// その他
+
+
+
+		// Average FPS stats support fields
+		private bool bHasFinishedPlaying;
+		private bool bHasFinishedEndAnime;
+		private bool bHasFinishedFadeout;
+
+
 
 		#region [ private ]
 		//-----------------
