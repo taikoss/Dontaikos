@@ -385,14 +385,14 @@ namespace TJAPlayer3
 				{
 					if ( TJAPlayer3.Input管理.Keyboard.bキーが押された( (int)SlimDX.DirectInput.Key.Escape ) )
 					{
-						TJAPlayer3.Skin.sound取消音.t再生する();
+						TJAPlayer3.Skin.sound成績発表.t停止する();
 						this.actFO.tフェードアウト開始();
 						base.eフェーズID = CStage.Eフェーズ.共通_フェードアウト;
 						this.eフェードアウト完了時の戻り値 = E戻り値.完了;
 					}
 					if ( ( ( TJAPlayer3.Pad.b押されたDGB( Eパッド.CY ) || TJAPlayer3.Pad.b押された( E楽器パート.DRUMS, Eパッド.RD ) ) || ( TJAPlayer3.Pad.b押された( E楽器パート.DRUMS, Eパッド.LC ) || TJAPlayer3.Input管理.Keyboard.bキーが押された( (int) SlimDX.DirectInput.Key.Return ) ) ) && this.bアニメが完了 )
 					{
-						TJAPlayer3.Skin.sound取消音.t再生する();
+						TJAPlayer3.Skin.sound成績発表.t停止する();
 //						this.actFO.tフェードアウト開始();
 						base.eフェーズID = CStage.Eフェーズ.共通_フェードアウト;
 						this.eフェードアウト完了時の戻り値 = E戻り値.完了;
