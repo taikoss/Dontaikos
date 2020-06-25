@@ -11,6 +11,7 @@
 *.DotSettings.user
 /packages
 /Test/Capture_img
+/Test/songs
 /Test/Config*.ini
 /Test/bs1770gain**
 /Test/dll/CSharpTest.Net.Collections.*
