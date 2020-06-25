@@ -26,6 +26,14 @@ namespace TJAPlayer3
 			Trace.Indent();
 			try
 			{
+				RandomEvent = rng.Next(0, 1);
+				//伯方の塩
+				if (RandomEvent == 0)
+				{
+					RandomTx[0] = TJAPlayer3.Tx.TxC(@"0_Startup\hakata.png");
+					RandomSE[0] = new CSkin.Cシステムサウンド(@"Sounds\Startup\hakata.ogg", false, false, ESoundGroup.SongPlayback);
+				}
+
 				this.list進行文字列 = new List<string>();
 				base.eフェーズID = CStage.Eフェーズ.共通_通常状態;
 				base.On活性化();
@@ -42,6 +50,8 @@ namespace TJAPlayer3
 			Trace.Indent();
 			try
 			{
+				TJAPlayer3.t安全にDisposeする(RandomTx);
+
 				this.list進行文字列 = null;
 				if (es != null)
 				{
@@ -81,7 +91,6 @@ namespace TJAPlayer3
 		{
 			bLoadStarted = true;
 
-			Random rng = new System.Random();
 			var random = rng.Next(0, 100);
 
 			if (random >= 0 && random < 99) this.bgm起動画面 = new CSkin.Cシステムサウンド(@"Sounds\Startup\BGM_1.ogg", true, false, ESoundGroup.SongPlayback);
@@ -105,9 +114,31 @@ namespace TJAPlayer3
 		{
 			if (!base.b活性化してない)
 			{
+				if (!bLoadStarted)
+				{
+					if (base.b初めての進行描画)
+					{
+						this.RandomTimer = new CCounter(0, 1000, 10, TJAPlayer3.Timer);
+					}
+
+					if (RandomEvent == 0)
+					{
+						if (base.b初めての進行描画) this.RandomSE[0].t再生する();
+
+						this.RandomTx[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
+
+						if (this.RandomTimer.n現在の値 >= 200)
+						{
+							this.t読込開始();
+						}
+					}
+
+					this.RandomTimer.t進行();
+				}
+
 				if (base.b初めての進行描画)
 				{
-					this.t読込開始();
+					//this.t読込開始();
 					
 					base.b初めての進行描画 = false;
 				}
@@ -203,7 +234,14 @@ namespace TJAPlayer3
 
 		private bool bLoadStarted;
 
+		private Random rng = new System.Random();
 		public CSkin.Cシステムサウンド bgm起動画面 = null;
+		private int RandomEvent;
+		private CCounter RandomTimer;
+
+		//random textures
+		private CTexture[] RandomTx = new CTexture[10];
+		private CSkin.Cシステムサウンド[] RandomSE = new CSkin.Cシステムサウンド[10];
 		#endregion
 	}
 }
