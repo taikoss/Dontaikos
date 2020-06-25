@@ -239,7 +239,6 @@ namespace TJAPlayer3
 
 				try
                 {
-                    TJAPlayer3.Skin.bgm起動画面.t再生する();
                     TJAPlayer3.Skin.ReloadSkin();
 
 					lock ( TJAPlayer3.stage起動.list進行文字列 )

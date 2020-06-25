@@ -302,7 +302,7 @@ namespace TJAPlayer3
 
         public Cシステムサウンド bgmオプション画面 = null;
         public Cシステムサウンド bgmコンフィグ画面 = null;
-        public Cシステムサウンド bgm起動画面 = null;
+        //public Cシステムサウンド bgm起動画面 = null;
         public Cシステムサウンド bgm選曲画面 = null;
         public Cシステムサウンド bgm結果画面 = null;
         public Cシステムサウンド soundSTAGEFAILED音 = null;
@@ -374,7 +374,7 @@ namespace TJAPlayer3
                         return this.soundタイトル音;
 
                     case 12:
-                        return this.bgm起動画面;
+
 
                     case 13:
                         return this.bgmオプション画面;
@@ -545,7 +545,7 @@ namespace TJAPlayer3
             this.sound曲読込開始音 = new Cシステムサウンド(@"Sounds\Now loading.ogg", false, true, ESoundGroup.Unknown);
             this.soundタイトル音 = new Cシステムサウンド(@"Sounds\Title.ogg", false, true, ESoundGroup.SongPlayback);
             this.sound数字回転音 = new Cシステムサウンド(@"Sounds\Rotation.ogg", true, false, ESoundGroup.SoundEffect);
-            this.bgm起動画面 = new Cシステムサウンド(@"Sounds\Setup BGM.ogg", true, true, ESoundGroup.SongPlayback);
+            //this.bgm起動画面 = new Cシステムサウンド(@"Sounds\Setup BGM.ogg", true, true, ESoundGroup.SongPlayback);
             this.bgmオプション画面 = new Cシステムサウンド(@"Sounds\Option BGM.ogg", true, true, ESoundGroup.SongPlayback);
             this.bgmコンフィグ画面 = new Cシステムサウンド(@"Sounds\Config BGM.ogg", true, true,  ESoundGroup.SongPlayback);
             this.bgm選曲画面 = new Cシステムサウンド(@"Sounds\Select BGM.ogg", true, true, ESoundGroup.SongPreview);

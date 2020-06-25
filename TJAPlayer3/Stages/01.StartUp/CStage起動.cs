@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using FDK;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using FDK;
 
 
 namespace TJAPlayer3
@@ -79,6 +80,14 @@ namespace TJAPlayer3
 		public void t読込開始()
 		{
 			bLoadStarted = true;
+
+			Random rng = new System.Random();
+			var random = rng.Next(0, 100);
+
+			if (random >= 0 && random < 99) this.bgm起動画面 = new CSkin.Cシステムサウンド(@"Sounds\Startup\BGM_1.ogg", true, false, ESoundGroup.SongPlayback);
+			else if (random == 99) this.bgm起動画面 = new CSkin.Cシステムサウンド(@"Sounds\Startup\BGM_2.ogg", true, false, ESoundGroup.SongPlayback);
+
+			this.bgm起動画面.t再生する();
 
 			this.list進行文字列.Add(TJAPlayer3.AppDisplayNameWithInformationalVersion);
 			this.list進行文字列.Add("");
@@ -174,6 +183,8 @@ namespace TJAPlayer3
 					if (es != null && es.IsSongListEnumCompletelyDone)                          // 曲リスト作成が終わったら
 					{
 						TJAPlayer3.Songs管理 = (es != null) ? es.Songs管理 : null;      // 最後に、曲リストを拾い上げる
+
+						this.bgm起動画面.t停止する();
 						return 1;
 					}
 				}
@@ -191,6 +202,8 @@ namespace TJAPlayer3
 		private CEnumSongs es;
 
 		private bool bLoadStarted;
+
+		public CSkin.Cシステムサウンド bgm起動画面 = null;
 		#endregion
 	}
 }
