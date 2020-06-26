@@ -30,6 +30,8 @@ namespace TJAPlayer3
 				//伯方の塩
 				if (RandomEvent == 0)
 				{
+					RandomTx = new CTexture[1];
+
 					RandomTx[0] = TJAPlayer3.Tx.TxC(@"0_Startup\hakata.png");
 					RandomSE[0] = new CSkin.Cシステムサウンド(@"Sounds\Startup\hakata.ogg", false, false, ESoundGroup.SongPlayback);
 				}
@@ -240,7 +242,7 @@ namespace TJAPlayer3
 		private CCounter RandomTimer;
 
 		//random textures
-		private CTexture[] RandomTx = new CTexture[10];
+		private CTexture[] RandomTx;
 		private CSkin.Cシステムサウンド[] RandomSE = new CSkin.Cシステムサウンド[10];
 		#endregion
 	}
