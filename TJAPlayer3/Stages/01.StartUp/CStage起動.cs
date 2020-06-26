@@ -1,5 +1,7 @@
 ﻿using FDK;
 using System;
+using System.Windows.Forms;
+using SampleFramework;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -129,7 +131,7 @@ namespace TJAPlayer3
 
 						this.RandomTx[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
 
-						if (this.RandomTimer.n現在の値 >= 200)
+						if (this.RandomTimer.n現在の値 >= 250)
 						{
 							this.t読込開始();
 						}
@@ -244,6 +246,7 @@ namespace TJAPlayer3
 		//random textures
 		private CTexture[] RandomTx;
 		private CSkin.Cシステムサウンド[] RandomSE = new CSkin.Cシステムサウンド[10];
+
 		#endregion
 	}
 }
