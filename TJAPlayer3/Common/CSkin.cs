@@ -543,7 +543,7 @@ namespace TJAPlayer3
             this.soundステージクリア音 = new Cシステムサウンド(@"Sounds\Stage clear.ogg", false, true, ESoundGroup.Voice);
             this.soundフルコンボ音 = new Cシステムサウンド(@"Sounds\Full combo.ogg", false, false, ESoundGroup.Voice);
             this.sound曲読込開始音 = new Cシステムサウンド(@"Sounds\Now loading.ogg", false, true, ESoundGroup.Unknown);
-            this.soundタイトル音 = new Cシステムサウンド(@"Sounds\Title.ogg", false, true, ESoundGroup.SongPlayback);
+            this.soundタイトル音 = new Cシステムサウンド(@"Sounds\Title.ogg", true, true, ESoundGroup.SongPlayback);
             this.sound数字回転音 = new Cシステムサウンド(@"Sounds\Rotation.ogg", true, false, ESoundGroup.SoundEffect);
             //this.bgm起動画面 = new Cシステムサウンド(@"Sounds\Setup BGM.ogg", true, true, ESoundGroup.SongPlayback);
             this.bgmオプション画面 = new Cシステムサウンド(@"Sounds\Option BGM.ogg", true, true, ESoundGroup.SongPlayback);
