@@ -122,7 +122,14 @@ namespace TJAPlayer3
                             }
                             else
                             {
-                                Flying[i].X += Flying[i].IncreaseX;
+                                if (Flying[i].Player == 0)
+                                {
+                                    Flying[i].X += rng.Next(-25,26);
+                                }
+                                else if (Flying[i].Player == 1)
+                                {
+                                    Flying[i].X += rng.Next(-25, 26);
+                                }
                             }
 
                             if (n % TJAPlayer3.Skin.Game_Effect_FireWorks_Timing == 0 && !Flying[i].IsRoll && Flying[i].Counter.n現在の値 > 18)
@@ -136,12 +143,12 @@ namespace TJAPlayer3
 
                             if (Flying[i].Player == 0)
                             {
-                                Flying[i].Y = (TJAPlayer3.Skin.Game_Effect_FlyingNotes_StartPoint_Y[Flying[i].Player]) + -Math.Sin(Flying[i].Counter.n現在の値 * (Math.PI / 180)) * TJAPlayer3.Skin.Game_Effect_FlyingNotes_Sine;
+                                Flying[i].Y = (TJAPlayer3.Skin.Game_Effect_FlyingNotes_StartPoint_Y[Flying[i].Player]) + Math.Sin(Flying[i].Counter.n現在の値 * (Math.PI / 180)) * TJAPlayer3.Skin.Game_Effect_FlyingNotes_Sine;
                                 Flying[i].Y -= Flying[i].IncreaseY * Flying[i].Counter.n現在の値;
                             }
                             else
                             {
-                                Flying[i].Y = (TJAPlayer3.Skin.Game_Effect_FlyingNotes_StartPoint_Y[Flying[i].Player]) + Math.Sin(Flying[i].Counter.n現在の値 * (Math.PI / 180)) * TJAPlayer3.Skin.Game_Effect_FlyingNotes_Sine;
+                                Flying[i].Y = (TJAPlayer3.Skin.Game_Effect_FlyingNotes_StartPoint_Y[Flying[i].Player]) + -Math.Sin(Flying[i].Counter.n現在の値 * (Math.PI / 180)) * TJAPlayer3.Skin.Game_Effect_FlyingNotes_Sine;
                                 Flying[i].Y += Flying[i].IncreaseY * Flying[i].Counter.n現在の値;
                             }
 
@@ -191,6 +198,8 @@ namespace TJAPlayer3
 
         public readonly int[] StartPointX = new int[2];
         public readonly int[] StartPointY = new int[2];
+
+        private Random rng = new System.Random();
 
         //-----------------
         #endregion
