@@ -52,7 +52,7 @@ namespace TJAPlayer3
 				?.InformationalVersion
 			?? $"{GetAppDisplayThreePartVersion()}";
 
-		public static readonly string AppDisplayNameWithThreePartVersion = $"{AppDisplayName} {AppDisplayThreePartVersion}";
+		public static readonly string AppDisplayNameWithThreePartVersion = $"{AppDisplayName} {AppDisplayThreePartVersion} 11451419198104545";
 		public static readonly string AppDisplayNameWithInformationalVersion = $"{AppDisplayName} {AppInformationalVersion}";
 
 		public static TJAPlayer3 app
