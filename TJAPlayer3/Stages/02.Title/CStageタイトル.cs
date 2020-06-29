@@ -36,6 +36,7 @@ namespace TJAPlayer3
 				this.ct上移動用 = new CCounter();
 				this.ct下移動用 = new CCounter();
 				this.ctカーソルフラッシュ用 = new CCounter();
+				TJAPlayer3.app.ChangeWindowTitle("");
 				base.On活性化();
 			}
 			finally

@@ -1804,6 +1804,7 @@ for (int i = 0; i < 3; i++) {
 				}
 
 				ShowWindowTitleWithSoundType();
+				ChangeWindowTitle("(Now Loading. Please wait.)", false, true);
 				FDK.CSound管理.bIsTimeStretch = TJAPlayer3.ConfigIni.bTimeStretch;
 				Sound管理.nMasterVolume = TJAPlayer3.ConfigIni.nMasterVolume;
 				//FDK.CSound管理.bIsMP3DecodeByWindowsCodec = CDTXMania.ConfigIni.bNoMP3Streaming;
@@ -1913,6 +1914,16 @@ for (int i = 0; i < 3; i++) {
 				delay = " (" + Sound管理.GetSoundDelay() + "ms)";
 			}
 			base.Window.Text = $"{AppDisplayNameWithInformationalVersion} ({CSound管理.GetCurrentSoundDeviceType()}{delay})";
+		}
+
+
+		public void ChangeWindowTitle(string Name, bool StringInitialize = true, bool Concat = true)
+		{
+			if (StringInitialize)
+				this.ShowWindowTitleWithSoundType();
+			if (Concat)
+				Name = base.Window.Text + Name;
+			base.Window.Text = Name;
 		}
 
 		private void t終了処理()
